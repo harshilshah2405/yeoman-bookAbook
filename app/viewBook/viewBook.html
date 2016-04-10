@@ -1,0 +1,107 @@
+
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <!-- Navigation Bar Boot strap -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">bookAbook</a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <form class="navbar-form navbar-left" role="search">
+          <p class="form-group"> Search by</p>
+          <div class="form-group">                <!-- Search By field -->
+            <select class="form-control" ng-model="searchBy">
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="genre">Genre</option>
+              <option value="user">User</option>
+            </select>
+          </div>
+          <div class="form-group">                <!-- Search field -->
+            <input type="text" class="form-control" placeholder="Search" ng-model="search">
+          </div>
+          <button type="submit" class="btn btn-default" ng-click="onGo()">Go</button> <!-- Go button event onGo -->
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active headerLink" id="profile"><a href="profile">Profile</a></li>
+          <li class="headerLink" id="lentBook"><a href="lentBook">lentBook</a></li>
+          <li class="headerLink" id="borrowedBook"><a href="borrowedBook">borrowedBook</a></li>
+          <li class="headerLink" id="request"><a href="request">Request</a></li>
+          <li class="dropdown headerLink" id="dropDown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="editProfile">Edit Profile</a></li>
+              <li><a href="logout">logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+
+  <div class="container-fluid" >
+    <div class="row">
+
+      <!-- Left Side Bar -->
+      <div class="col-md-3 scrollable sidebar">
+        <div class="container" id="profilePic">
+          <img src="../images/pp.jpg" class="img-responsive">
+        </div><br />
+        <p id="greeting" style="font-size: 20;">Hello {{userName}}</p><br />
+        <p style="font-size: 20;">Overdue Books</p>
+        <div class="table-responsive">
+          <table class="table"> <!-- Book name no more than 25 char-->
+            <thead>
+              <tr>
+                <td>Book Name</td>
+                <td>Days</td>
+              </tr>
+            </thead>
+            <tbody >
+              <tr ng-repeat="book in dueBooks">
+                <td>{{book.name}}</td>
+                <td>{{book.days}}</td>
+              </tr> 
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-9 scrollable content">
+        <div class="row">
+          <div class="col-md-4" style=""><img src="../images/pp.jpg" class="img-responsive" style="height : inherit;"></div>
+          <div class="col-md-5" style=" vertical-align:middle; margin : 40 0 0 0">
+            <p>Title : {{title}}</p>
+            <p> Author : {{book.Author}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <p style="font-weight:bold; margin: 30 10 10 15; text-decoration: underline;"> STATUS</p>
+          <div class="col-md-2"><p>Borrowed</p></div>
+          <div class="col-md-6">
+            <p> From date : {{fromDate}} </p>
+            <p> To date : {{toDate}} </p>
+            <p><button type="submit" class="btn btn-default" ng-click="onReturn" style="margin : 5 5 5 0">Return</button></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--footer-->
+  <nav class="navbar navbar-inverse footer" role="navigation" style="width : inherit; margin:5 0 0 0;">
+      <div class="container">
+        <ul class="nav navbar-nav navbar-left" >
+            <li class="active"><a href="aboutUs">About us</a></li>
+            <li ><a href="contact" >contact</a></li>
+            <li ><a href="FAQ">FAQ</a></li>
+            <li ><a href="report" >Report</a></li>
+        </ul>
+    </div>
+  </nav>
